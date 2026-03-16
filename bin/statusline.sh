@@ -118,7 +118,7 @@ format_reset_time() {
 }
 
 # ── Extract JSON data ───────────────────────────────────
-model_name=$(echo "$input" | jq -r '.model.display_name // "Claude"')
+model_name=$(echo "$input" | jq -r '.model.display_name // "Claude"' | sed 's/ ([^)]*context)//g')
 
 size=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
 [ "$size" -eq 0 ] 2>/dev/null && size=200000
@@ -177,7 +177,7 @@ fi
 
 line1="${blue}${model_name}${reset}"
 line1+="${sep}"
-line1+="${dim}Ctx:${reset} ${pct_color}${used_tokens} (${pct_used}%)${reset} ${sep}${dim}Total:${reset} ${white}${total_tokens}${reset}"
+line1+="${dim}Ctx:${reset} ${pct_color}${used_tokens} (${pct_used}%)${reset}"
 line1+="${sep}"
 line1+="${cyan}${dirname}${reset}"
 if [ -n "$git_branch" ]; then
