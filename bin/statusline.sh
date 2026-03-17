@@ -362,7 +362,7 @@ if [ -n "$usage_data" ] && echo "$usage_data" | jq -e . >/dev/null 2>&1; then
 fi
 
 # ── Output ──────────────────────────────────────────────
+[ -n "$rate_lines" ] && line1+="${sep}${rate_lines}"
 printf "%b" "$line1"
-[ -n "$rate_lines" ] && printf "\n\n%b" "$rate_lines"
 
 exit 0
