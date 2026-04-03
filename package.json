@@ -1,10 +1,14 @@
 {
-  "name": "@kamranahmedse/claude-statusline",
+  "name": "@chennhsu/claude-statusline",
   "version": "1.0.4",
   "description": "A status line for Claude Code CLI showing model, context usage, rate limits, and more",
   "bin": {
     "claude-statusline": "./bin/install.js"
   },
+  "files": [
+    "bin/install.js",
+    "bin/statusline.sh"
+  ],
   "keywords": [
     "claude",
     "claude-code",
