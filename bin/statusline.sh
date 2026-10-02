@@ -136,9 +136,9 @@ else
     pct_used=0
 fi
 
-effort="default"
+effort=$(echo "$input" | jq -r '.effort.level // empty')
 settings_path="$HOME/.claude/settings.json"
-if [ -f "$settings_path" ]; then
+if [ -z "$effort" ] && [ -f "$settings_path" ]; then
     effort=$(jq -r '.effortLevel // "default"' "$settings_path" 2>/dev/null)
 fi
 
